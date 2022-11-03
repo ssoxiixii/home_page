@@ -6,7 +6,7 @@ load_dotenv()
 
 DEBUG = os.environ.get('DEBUG')
 
-SITE_ID = 1
+SITE_ID = os.environ.get('SITE_ID')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
