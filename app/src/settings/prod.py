@@ -9,6 +9,7 @@ DEBUG = os.environ.get('DEBUG')
 SITE_ID = os.environ.get('SITE_ID')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS').split(' ')
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
