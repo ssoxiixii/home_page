@@ -34,8 +34,16 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+            {% if user.is_authenticated %}
+                <p>{{ user.email }}</p>
+                <button type="button" class="btn btn-warning">
+                    <a href="{% url 'logout' %}" class="link-light">Logout</a>
+                </button>
+            {% else %}
+              <button type="button" class="btn btn-outline-light me-2">
+                  <a href="{% url 'login' %}" class="link-light">Login</a>
+              </button>
+            {% endif %}
         </div>
       </div>
     </div>

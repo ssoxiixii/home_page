@@ -14,15 +14,8 @@
                 <br>
             {% endfor %}
             <div class="form__group">
-                <label for="{{ form.email.id_for_label }}" class="form__label">email</label>
                 <div class="form__field-group">
-                    {{ form.email }}
-                </div>
-            </div>
-            <div class="form__group">
-                <label for="{{ form.password.id_for_label }}" class="form__label">Password</label>
-                <div class="form__field-group">
-                    {{ form.password|add_class:"form__input" }}
+                    {{ form.as_p }}
                 </div>
             </div>
             <div class="form__footer">
