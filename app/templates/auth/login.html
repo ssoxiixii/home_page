@@ -7,21 +7,34 @@
         <h1 class="main__title">Login</h1>
     </div>
     <div class="form-container">
-        <form class="form" method="post" action="{% url 'login' %}">
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+            {% else %}
+                <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+        <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             {% for error in form.non_field_errors %}
                 <span class="form__error">{{ error}}</span>
                 <br>
             {% endfor %}
-            <div class="form__group">
-                <div class="form__field-group">
-                    {{ form.as_p }}
-                </div>
-            </div>
-            <div class="form__footer">
-                <button type="submit" class="button button_style_blue">Login</button>
-                <input type="hidden" name="next" value="{{ next }}">
-            </div>
+            <table>
+            <tr>
+                {{ form.username.errors }}
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            </table>
+
+            <input type="submit" value="login">
+            <input type="hidden" name="next" value="{{ next }}">
         </form>
     </div>
 {% endblock %}
