@@ -15,26 +15,26 @@
                 <p>Please login to see this page.</p>
             {% endif %}
         {% endif %}
+    <div class="col-md-6 offset-md-3">
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             {% for error in form.non_field_errors %}
-                <span class="form__error">{{ error}}</span>
-                <br>
+                {{ error}}
             {% endfor %}
-            <table>
-            <tr>
-                {{ form.username.errors }}
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-            </table>
-
-            <input type="submit" value="login">
-            <input type="hidden" name="next" value="{{ next }}">
+            {{ form.username.errors }}
+            <div class="row g-3">
+                <div class="col-sm">
+                    {{ form.username }}
+                </div>
+                <div class="col-sm">
+                    {{ form.password }}
+                </div>
+                <div class="col-sm-2">
+                    <input type="submit" class="form-control" value="login">
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+                </div>
         </form>
+    </div>
     </div>
 {% endblock %}
